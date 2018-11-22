@@ -6,6 +6,7 @@
   "author": "Rolf Erik Lekang <me@rolflekang.com>",
   "license": "MIT",
   "scripts": {
+    "release": "standard-version -i changelog.md",
     "lint": "eslint --ext ts,js ."
   },
   "bin": {
@@ -38,6 +39,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-typescript": "^0.13.0",
     "prettier": "^1.14.3",
+    "standard-version": "^4.4.0",
     "typescript": "^3.1.6",
     "typescript-eslint-parser": "^20.1.1"
   }
