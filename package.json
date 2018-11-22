@@ -1,0 +1,39 @@
+{
+  "name": "@relekang/todo",
+  "version": "1.0.0-rc.0",
+  "description": "Just some todo stuff",
+  "repository": "git@github.com:relekang/todo.git",
+  "author": "Rolf Erik Lekang <me@rolflekang.com>",
+  "license": "MIT",
+  "bin": {
+    "todo": "./bin.js"
+  },
+  "files": [
+    "lib",
+    "bin.js"
+  ],
+  "dependencies": {
+    "@relekang/args": "^1.0.0-alpha.10",
+    "chalk": "^2.4.1",
+    "inquirer": "^6.2.0",
+    "js-yaml": "^3.12.0",
+    "lodash": "^4.17.11",
+    "prompt-sync": "^4.1.6",
+    "user-home": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^0.0.43",
+    "@types/js-yaml": "^3.11.2",
+    "@types/lodash": "^4.14.118",
+    "@types/node": "^10.12.9",
+    "@types/user-home": "^2.0.0",
+    "eslint": "^5.8.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-config-relekang": "^1.0.0-rc.8",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-typescript": "^0.13.0",
+    "prettier": "^1.14.3",
+    "typescript": "^3.1.6",
+    "typescript-eslint-parser": "^20.1.1"
+  }
+}
