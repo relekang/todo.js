@@ -5,6 +5,9 @@
   "repository": "git@github.com:relekang/todo.git",
   "author": "Rolf Erik Lekang <me@rolflekang.com>",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ext ts,js ."
+  },
   "bin": {
     "todo": "./bin.js"
   },
@@ -18,6 +21,7 @@
     "inquirer": "^6.2.0",
     "js-yaml": "^3.12.0",
     "lodash": "^4.17.11",
+    "mkdirp": "^0.5.1",
     "prompt-sync": "^4.1.6",
     "user-home": "^2.0.0"
   },
@@ -25,6 +29,7 @@
     "@types/inquirer": "^0.0.43",
     "@types/js-yaml": "^3.11.2",
     "@types/lodash": "^4.14.118",
+    "@types/mkdirp": "^0.5.2",
     "@types/node": "^10.12.9",
     "@types/user-home": "^2.0.0",
     "eslint": "^5.8.0",

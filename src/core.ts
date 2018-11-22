@@ -1,9 +1,9 @@
 import * as storage from './storage';
-import { FileContent, CurrentConfig } from './types';
+import { FileContent, CurrentFileContent } from './types';
 
 const currentVersion = 2;
 
-function migrate(data: FileContent): CurrentConfig {
+function migrate(data: FileContent): CurrentFileContent {
   switch (data.version) {
     case undefined:
     case 1:
@@ -16,7 +16,7 @@ function migrate(data: FileContent): CurrentConfig {
   }
 }
 
-export async function read(): Promise<CurrentConfig> {
+export async function read(): Promise<CurrentFileContent> {
   let content = await storage.read();
   if (content.version !== currentVersion) {
     content = migrate(content);
@@ -25,7 +25,9 @@ export async function read(): Promise<CurrentConfig> {
   return content;
 }
 
-export async function write(content: CurrentConfig): Promise<CurrentConfig> {
+export async function write(
+  content: CurrentFileContent
+): Promise<CurrentFileContent> {
   storage.write(content);
   return content;
 }
