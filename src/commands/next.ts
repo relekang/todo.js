@@ -12,5 +12,9 @@ const findNext = flow([sortBy('priority'), head]);
 export async function run(options: Options) {
   const upNext = findNext((await read()).todos);
 
-  console.log(chalk`{gray Up next} {bold ${upNext.title}}`);
+  if (upNext) {
+    console.log(chalk`{gray Up next} {bold ${upNext.title}}`);
+  } else {
+    console.log(chalk`{green Nothing todo ✅}`);
+  }
 }
