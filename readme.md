@@ -2,6 +2,8 @@
 
 > Just another todo cli.
 
+![Screenshot](./screenshot.png)
+
 ## Installation
 
 ```
