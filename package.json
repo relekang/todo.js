@@ -17,7 +17,7 @@
     "bin.js"
   ],
   "dependencies": {
-    "@relekang/args": "^1.0.0",
+    "@relekang/args": "^1.1.0",
     "chalk": "^2.4.1",
     "inquirer": "^6.2.0",
     "js-yaml": "^3.12.0",
