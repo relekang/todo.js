@@ -13,7 +13,7 @@ export async function read(): Promise<FileContent> {
     return yaml.safeLoad((await readFile(config.dataPath)).toString());
   } catch (error) {
     if (error.code === 'ENOENT') {
-      return { version: 2, todos: [] };
+      return { version: 3, profiles: { default: { todos: [] } } };
     }
     throw error;
   }

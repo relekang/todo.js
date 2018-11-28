@@ -1,5 +1,6 @@
-import { read, write } from '../core';
 import { CommandOption } from '@relekang/args/lib/types';
+
+import { add } from '../core';
 
 export const name = 'add';
 export const help = 'Add a new todo';
@@ -22,12 +23,8 @@ type Options = {
 };
 
 export async function run(options: Options) {
-  const data = await read();
-  await write({
-    ...data,
-    todos: [
-      ...data.todos,
-      { title: options.title, priority: options.pri ? 1 : undefined },
-    ],
+  await add({
+    title: options.title,
+    priority: options.pri ? 1 : undefined,
   });
 }

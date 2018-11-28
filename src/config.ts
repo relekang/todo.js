@@ -13,10 +13,12 @@ type Config = {
   version: 1;
   // eslint-disable-next-line
   dataPath?: string;
+  profile?: string;
 };
 
 const defaultDataPath = path.join(userHome, '.todocli', 'data.yml');
 const configPath = path.resolve(userHome, '.todocli', 'config.yml');
+const defaultProfile = 'default';
 
 let config: Config;
 export let hasConfig: boolean;
@@ -31,6 +33,9 @@ try {
 export const dataPath = path.resolve(
   config.dataPath || process.env.TODO_FILE_PATH || defaultDataPath
 );
+
+export const profile =
+  config.profile || process.env.TODO_PROFILE || defaultProfile;
 
 export async function createConfig() {
   await mkdirpAsync(path.dirname(configPath));
