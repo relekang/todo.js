@@ -1,4 +1,5 @@
 import chalk from 'chalk';
+import { sortBy } from 'lodash/fp';
 
 import { read } from '../core';
 
@@ -11,10 +12,12 @@ function leadingZero(input: string) {
   return input.length === 1 ? `0${input}` : input;
 }
 
+const sort = sortBy('priority');
+
 export async function run(options: Options) {
   const data = await read();
   console.log(
-    data.todos
+    sort(data.todos)
       .map(
         ({ title }, index) =>
           chalk` {gray ${leadingZero(String(index + 1))}: }${title}`

@@ -22,6 +22,9 @@ export async function read(): Promise<FileContent> {
 export async function write(
   content: CurrentFileContent
 ): Promise<CurrentFileContent> {
-  await writeFile(config.dataPath, yaml.safeDump(content));
+  await writeFile(
+    config.dataPath,
+    yaml.safeDump(content, { skipInvalid: true })
+  );
   return content;
 }
