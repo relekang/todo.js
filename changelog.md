@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/relekang/todo/compare/v1.2.0...v1.3.0) (2018-12-01)
+
+
+### Features
+
+* Add encryption of data files ([8d94a55](https://github.com/relekang/todo/commit/8d94a55)), closes [#3](https://github.com/relekang/todo/issues/3)
+* Add profiles command to manage profiles ([5dc03b5](https://github.com/relekang/todo/commit/5dc03b5)), closes [#1](https://github.com/relekang/todo/issues/1)
+* Move profiles from data file to config file ([31061d1](https://github.com/relekang/todo/commit/31061d1))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/relekang/todo/compare/v1.1.0...v1.2.0) (2018-11-29)
 
