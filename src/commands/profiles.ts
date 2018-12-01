@@ -1,9 +1,8 @@
 import { CommandOption } from '@relekang/args/lib/types';
-
-import { readProfileNames, read } from '../core';
 import { CliError } from '@relekang/args';
-import { write } from '../storage';
-import inquirer = require('inquirer');
+import inquirer from 'inquirer';
+
+import * as config from '../config';
 
 export const name = 'profiles';
 export const help = 'Manage profiles';
@@ -31,7 +30,7 @@ type Options = {
 export async function run(options: Options) {
   switch (options.task) {
     case 'list': {
-      const profiles = await readProfileNames();
+      const profiles = Object.keys(config.profiles);
       console.log(profiles.join('\n'));
       break;
     }
@@ -39,15 +38,13 @@ export async function run(options: Options) {
       if (!options.name) {
         throw new CliError({ message: 'Missing option name.', exitCode: 1 });
       }
-      const data = await read();
-      if (data.profiles[options.name]) {
+      if (config.profiles[options.name]) {
         throw new CliError({
           message: 'The profile already exist.',
           exitCode: 1,
         });
       }
-      data.profiles[options.name] = { todos: [] };
-      await write(data);
+      config.createProfile(options.name);
       break;
     }
     case 'delete': {
@@ -63,9 +60,7 @@ export async function run(options: Options) {
       ]);
 
       if (answers.confirm) {
-        const data = await read();
-        delete data.profiles[options.name];
-        await write(data);
+        config.deleteProfile(options.name);
         console.log(`Deleted ${options.name}`);
       }
       break;

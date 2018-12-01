@@ -4,7 +4,7 @@ import {
   createKey,
   encrypt,
   decrypt,
-} from '@/storage';
+} from '../src/crypto';
 
 [[ALGORITHM, 'aes-256-ctr'], [KEY_ALGORITHM, 'sha256']].forEach(([a, b]) => {
   test(`${a}=${b}`, () => {

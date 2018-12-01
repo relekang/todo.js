@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { flow, sortBy, head } from 'lodash/fp';
 
-import { readProfileContent } from '../core';
+import { read } from '../core';
 import { profileOption } from '../cliOptions';
 
 export const name = 'next';
@@ -13,7 +13,7 @@ type Options = { profile?: string };
 const findNext = flow([sortBy('priority'), head]);
 
 export async function run(options: Options) {
-  const upNext = findNext((await readProfileContent(options.profile)).todos);
+  const upNext = findNext((await read(options.profile)).todos);
 
   if (upNext) {
     console.log(chalk`{gray Up next} {bold ${upNext.title}}`);

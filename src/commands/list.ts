@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import { sortBy } from 'lodash/fp';
 import bitbar from 'bitbar';
 
-import { readProfileContent } from '../core';
+import { read } from '../core';
 import { Todo } from '../types';
 import { profileOption } from '../cliOptions';
 import { CliError } from '@relekang/args';
@@ -55,6 +55,6 @@ function formatter(format: string, value: Todo[]) {
 }
 
 export async function run(options: Options) {
-  const data = await readProfileContent(options.profile);
+  const data = await read(options.profile);
   console.log(formatter(options.format, sort(data.todos)));
 }

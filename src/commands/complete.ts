@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 
-import { writeProfileContent, readProfileContent } from '../core';
+import { read, write } from '../core';
 import { run as upNext } from './next';
 import { profileOption } from '../cliOptions';
 
@@ -11,7 +11,7 @@ export const namedOptions = [profileOption];
 type Options = { profile?: string };
 
 export async function run(options: Options) {
-  const data = await readProfileContent(options.profile);
+  const data = await read(options.profile);
   const answers = await inquirer.prompt<{ complete: string[] }>([
     {
       type: 'checkbox',
@@ -21,7 +21,7 @@ export async function run(options: Options) {
     },
   ]);
 
-  await writeProfileContent(
+  await write(
     {
       ...data,
       todos: data.todos.filter(

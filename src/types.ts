@@ -11,10 +11,8 @@ export type ProfileContent = {
 };
 
 export type CurrentFileContent = {
-  version: 3;
-  profiles: {
-    [profileName: string]: ProfileContent;
-  };
+  version: 4;
+  todos: TodoV2[];
 };
 
 export type FileContent =
@@ -25,5 +23,11 @@ export type FileContent =
   | {
       version: 2;
       todos: TodoV2[];
+    }
+  | {
+      version: 3;
+      profiles: {
+        [profileName: string]: ProfileContent;
+      };
     }
   | CurrentFileContent;

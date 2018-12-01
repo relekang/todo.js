@@ -4,7 +4,7 @@
     "module": "commonjs",
     "lib": ["es2015", "es2016","es2017", "es2018"],
     "declaration": false,
-    "sourceMap": false,
+    "sourceMap": true,
     "outDir": "./lib",
     "removeComments": true,
     "strict": true,
@@ -22,11 +22,6 @@
     "esModuleInterop": true,
 
     "baseUrl": ".",
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
   },
   "include": ["./src"]
 }

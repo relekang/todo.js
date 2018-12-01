@@ -2,14 +2,17 @@ import inquirer from 'inquirer';
 
 import { write } from '../storage';
 import { read } from '../core';
-import { updateConfig } from '../config';
+import * as config from '../config';
+import { profileOption } from '../cliOptions';
 
 export const name = 'encrypt';
 export const help = '';
 
-type Options = {};
+export const positionalOptions = [profileOption];
 
-export async function run(_options: Options) {
+type Options = { profile: string };
+
+export async function run(options: Options) {
   const answers = await inquirer.prompt<{ key: string }>([
     {
       type: 'input',
@@ -17,9 +20,10 @@ export async function run(_options: Options) {
       message: `Please enter the key for the encryption`,
     },
   ]);
-  await write(await read(), answers.key);
-  await updateConfig({
-    version: 1,
+  const profile = options.profile || config.profile;
+  await write(config.profiles[profile].path, await read(), answers.key);
+  await config.updateProfileConfig(profile, {
+    ...config.profiles[profile],
     encryptionKey: answers.key,
   });
 }

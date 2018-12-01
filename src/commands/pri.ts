@@ -1,7 +1,7 @@
 import prompt from 'prompt-sync';
 import chalk from 'chalk';
 
-import { readProfileContent, writeProfileContent } from '../core';
+import { read, write } from '../core';
 import { Todo } from '../types';
 import { run as upNext } from './next';
 import { profileOption } from '../cliOptions';
@@ -38,13 +38,13 @@ export async function run(options: Options) {
 
     return answer === 'a' ? -1 : 1;
   }
-  const data = await readProfileContent(options.profile);
+  const data = await read(options.profile);
   const { todos } = data;
 
   todos.sort(sorter);
 
   if (!abort) {
-    await writeProfileContent(
+    await write(
       {
         ...data,
         todos: todos.map((item, index) => ({ ...item, priority: index })),
