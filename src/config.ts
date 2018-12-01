@@ -5,7 +5,9 @@ import userHome from 'user-home';
 import yaml from 'js-yaml';
 import inquirer from 'inquirer';
 import { promisify } from 'util';
+import defaultsDeep from 'lodash/defaultsDeep';
 
+const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 const mkdirpAsync = promisify(mkdirp);
 
@@ -13,7 +15,10 @@ type Config = {
   version: 1;
   // eslint-disable-next-line
   dataPath?: string;
+  // eslint-disable-next-line
   profile?: string;
+  // eslint-disable-next-line
+  encryptionKey?: string
 };
 
 const defaultDataPath = path.join(userHome, '.todocli', 'data.yml');
@@ -37,6 +42,8 @@ export const dataPath = path.resolve(
 export const profile =
   config.profile || process.env.TODO_PROFILE || defaultProfile;
 
+export const encryptionKey = config.encryptionKey;
+
 export async function createConfig() {
   await mkdirpAsync(path.dirname(configPath));
   const answers = await inquirer.prompt<{ dataPath: string }>([
@@ -50,5 +57,14 @@ export async function createConfig() {
   await writeFile(
     configPath,
     yaml.safeDump({ version: 1, dataPath: answers.dataPath })
+  );
+}
+
+export async function updateConfig(data: Config) {
+  await writeFile(
+    configPath,
+    yaml.safeDump(
+      defaultsDeep(data, yaml.safeLoad((await readFile(configPath)).toString()))
+    )
   );
 }

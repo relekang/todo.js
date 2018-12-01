@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@types/inquirer": "^0.0.43",
+    "@types/jest": "^23.3.10",
     "@types/js-yaml": "^3.11.2",
     "@types/lodash": "^4.14.118",
     "@types/mkdirp": "^0.5.2",
@@ -40,8 +41,10 @@
     "eslint-config-relekang": "^1.0.0-rc.8",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-typescript": "^0.13.0",
+    "jest": "^23.6.0",
     "prettier": "^1.14.3",
     "standard-version": "^4.4.0",
+    "ts-jest": "^23.10.5",
     "typescript": "^3.1.6",
     "typescript-eslint-parser": "^20.1.1"
   }
