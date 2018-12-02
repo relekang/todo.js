@@ -7,14 +7,21 @@ import { ProfileConfig } from '../config';
 import { FileContent, CurrentFileContent } from '../types';
 
 const readFile = promisify(fs.readFile);
+
 const writeFile = promisify(fs.writeFile);
 
+type YamlProfileConfig = {
+  type: 'yaml-file';
+  path: string;
+  encryptionKey?: string | undefined;
+};
+
 export class YamlBackend implements StorageBackend {
-  profile: ProfileConfig;
+  profile: YamlProfileConfig;
   crypto: Crypto;
 
   constructor(profile: ProfileConfig, crypto: Crypto) {
-    this.profile = profile;
+    this.profile = profile as YamlProfileConfig;
     this.crypto = crypto;
   }
 

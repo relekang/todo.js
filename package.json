@@ -12,7 +12,8 @@
     "build": "lerna run build",
     "_lint": "eslint --ext ts,js",
     "lint": "yarn lint .",
-    "test": "jest"
+    "test": "jest",
+    "todo": "./packages/todo/bin.js"
   },
   "devDependencies": {
     "lerna": "^3.4.3",

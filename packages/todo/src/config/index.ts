@@ -10,13 +10,7 @@ import { migrate, currentVersion } from './migrate';
 const writeFile = promisify(fs.writeFile);
 const mkdirpAsync = promisify(mkdirp);
 
-export type ProfileConfig =
-  //| { type: string; [key: string]: string | undefined }
-  {
-    type: 'yaml-file';
-    path: string;
-    encryptionKey?: string | undefined;
-  };
+export type ProfileConfig = { type: string; [key: string]: string | undefined };
 
 export type Config = {
   version: 2;

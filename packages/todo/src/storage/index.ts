@@ -19,11 +19,36 @@ export function getBackend(profile: ProfileConfig): StorageBackend {
   switch (profile.type) {
     case 'yaml-file':
       return new YamlBackend(profile, crypto);
-    default:
-      throw new CliError({
-        message: `Missing storage backend for type ${profile.type}`,
-        exitCode: 1,
-      });
+
+    case 'gist': {
+      const name = `@relekang/todo-${profile.type}-backend`;
+      try {
+        const Backend = require(name).default;
+        return new Backend(profile, crypto);
+      } catch (error) {
+        throw new CliError({
+          message: `Missing storage backend for type ${
+            profile.type
+          }.\n You can install it with npm i -g ${name}`,
+          exitCode: 1,
+        });
+      }
+    }
+
+    default: {
+      const name = `todo-${profile.type}-backend`;
+      try {
+        const Backend = require(name).default;
+        return new Backend(profile, crypto);
+      } catch (error) {
+        throw new CliError({
+          message: `Missing storage backend for type ${
+            profile.type
+          }.\nThere might be a plugin called ${name}`,
+          exitCode: 1,
+        });
+      }
+    }
   }
 }
 
