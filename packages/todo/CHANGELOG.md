@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/relekang/todo/compare/@relekang/todo@1.4.0...@relekang/todo@1.5.0) (2018-12-02)
+
+
+### Features
+
+* Add support for activate/deactivate profiles ([53a8c4f](https://github.com/relekang/todo/commit/53a8c4f))
+
+
+
+
+
 # 1.4.0 (2018-12-02)
 
 
