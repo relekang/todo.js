@@ -13,7 +13,8 @@ export const namedOptions = [
   profileOption,
   {
     name: 'format',
-    help: 'Select format to print on, available formats: bitbar, default',
+    help:
+      'Select format to print on, available formats: bitbar, bitbar-title, default',
     transform: (value: string | undefined) => value || 'default',
   },
 ];
@@ -44,6 +45,17 @@ function formatter(format: string, value: Todo[]) {
         },
         bitbar.separator,
         { text: value[0].title, size: 18 },
+        bitbar.separator,
+        ...value.slice(1).map(todo => ({ text: todo.title })),
+        bitbar.separator,
+        { text: 'Refresh', refresh: true },
+      ]);
+    case 'bitbar-title':
+      return bitbar.create([
+        {
+          text: value.length > 0 ? value[0].title : '👌',
+          color: bitbar.darkMode ? 'white' : 'black',
+        },
         bitbar.separator,
         ...value.slice(1).map(todo => ({ text: todo.title })),
         bitbar.separator,
