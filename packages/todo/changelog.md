@@ -1,5 +1,26 @@
 # Change Log
 
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 1.4.0 (2018-12-02)
+
+
+### Bug Fixes
+
+* Upgrade [@relekang](https://github.com/relekang)/args to support libdefs ([5732483](https://github.com/relekang/todo/commit/5732483))
+
+
+### Features
+
+* Add support for loading storage backends from other packages ([30234f9](https://github.com/relekang/todo/commit/30234f9)), closes [#2](https://github.com/relekang/todo/issues/2)
+
+
+
+
+
+# Change Log
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 <a name="1.3.0"></a>
