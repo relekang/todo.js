@@ -8,3 +8,4 @@ env:
 rules:
   no-undef: 0
   no-console: 0
+  typescript/no-use-before-define: 0

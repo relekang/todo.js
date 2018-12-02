@@ -10,16 +10,12 @@
 npm i -g @relekang/todo
 ```
 
-## Usage
+### Development
 
-```
-$ todo help
--------------------------- todo --------------------------
+This repo contains multiple packages handled by lerna. To setup the repo run:
 
-Commands:
-add       - Add a new todo
-list      - List all todos
-next      - Get info about what to do next
-pri       - Prioritise all the things
-complete  - Mark tasks as completed
+```shell
+yarn
+lerna bootstrap
+git config alias.exec '!exec ' # This is used to run tests and linting from packages
 ```
