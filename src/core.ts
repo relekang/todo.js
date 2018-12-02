@@ -36,19 +36,16 @@ export async function read(
   profile = config.profile
 ): Promise<CurrentFileContent> {
   const profileConfig = config.profiles[profile];
-  if (profileConfig && profileConfig.path) {
-    let content = await storage.read(
-      profileConfig.path,
-      profileConfig.encryptionKey
-    );
+  if (profileConfig) {
+    let content = await storage.read(profileConfig);
     if (content.version !== currentVersion) {
       content = migrate(content);
-      await storage.write(profileConfig.path, content);
+      await storage.write(profileConfig, content);
     }
     return content;
   }
   throw new CliError({
-    message: `Missing profile ${config.profile}`,
+    message: `Missing profile ${profile}`,
     exitCode: 1,
   });
 }
@@ -58,16 +55,12 @@ export async function write(
   profile = config.profile
 ): Promise<CurrentFileContent> {
   const profileConfig = config.profiles[profile];
-  if (profileConfig && profileConfig.path) {
-    await storage.write(
-      profileConfig.path,
-      content,
-      profileConfig.encryptionKey
-    );
+  if (profileConfig) {
+    await storage.write(profileConfig, content);
     return content;
   }
   throw new CliError({
-    message: `Missing profile ${config.profile}`,
+    message: `Missing profile ${profile}`,
     exitCode: 1,
   });
 }

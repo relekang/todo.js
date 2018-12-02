@@ -21,9 +21,10 @@ export async function run(options: Options) {
     },
   ]);
   const profile = options.profile || config.profile;
-  await write(config.profiles[profile].path, await read(profile), answers.key);
+  const existingContent = await read(profile);
   await config.updateProfileConfig(profile, {
     ...config.profiles[profile],
     encryptionKey: answers.key,
   });
+  await write(config.profiles[profile], existingContent);
 }
