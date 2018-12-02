@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/relekang/todo/compare/@relekang/todo@1.5.0...@relekang/todo@1.6.0) (2018-12-02)
+
+
+### Features
+
+* Add bitbar-title format ([64ee5c3](https://github.com/relekang/todo/commit/64ee5c3))
+
+
+
+
+
 # [1.5.0](https://github.com/relekang/todo/compare/@relekang/todo@1.4.0...@relekang/todo@1.5.0) (2018-12-02)
 
 
