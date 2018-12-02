@@ -106,3 +106,8 @@ export async function updateProfileConfig(
   config.profiles[profile] = data;
   await save(config);
 }
+
+export async function setCurrentProfile(name: string | undefined) {
+  config.currentProfile = name;
+  await save(config);
+}

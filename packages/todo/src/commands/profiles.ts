@@ -11,14 +11,14 @@ export const positionalOptions: CommandOption[] = [
   {
     name: 'task',
     required: true,
-    help: 'Available tasks: list, add and delete.',
+    help: 'Available tasks: activate, deactivate list, add and delete.',
   },
 ];
 export const namedOptions: CommandOption[] = [
   {
     name: 'name',
     required: false,
-    help: 'The name of the profile applicable for add and delete.',
+    help: 'The name of the profile applicable for activate, add and delete.',
   },
 ];
 
@@ -29,11 +29,25 @@ type Options = {
 
 export async function run(options: Options) {
   switch (options.task) {
+    case 'activate': {
+      if (!options.name) {
+        throw new CliError({ message: 'Missing option name.', exitCode: 1 });
+      }
+      await config.setCurrentProfile(options.name);
+      break;
+    }
+
+    case 'deactivate': {
+      await config.setCurrentProfile(undefined);
+      break;
+    }
+
     case 'list': {
       const profiles = Object.keys(config.profiles);
       console.log(profiles.join('\n'));
       break;
     }
+
     case 'add': {
       if (!options.name) {
         throw new CliError({ message: 'Missing option name.', exitCode: 1 });
@@ -47,6 +61,7 @@ export async function run(options: Options) {
       config.createProfile(options.name);
       break;
     }
+
     case 'delete': {
       if (!options.name) {
         throw new CliError({ message: 'Missing option name.', exitCode: 1 });
