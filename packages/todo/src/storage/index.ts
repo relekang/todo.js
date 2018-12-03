@@ -35,6 +35,17 @@ export function getBackend(profile: ProfileConfig): StorageBackend {
       }
     }
 
+    case 'local': {
+      if (profile.requirePath) {
+        const Backend = require(profile.requirePath).default;
+        return new Backend(profile, crypto);
+      }
+      throw new CliError({
+        message: 'Missing requirePath on profile',
+        exitCode: 1,
+      });
+    }
+
     default: {
       const name = `todo-${profile.type}-backend`;
       try {
