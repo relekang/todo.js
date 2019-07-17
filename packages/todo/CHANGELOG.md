@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/relekang/todo/compare/@relekang/todo@1.7.0...@relekang/todo@1.8.0) (2019-07-17)
+
+
+### Features
+
+* Add support for local storage backends ([216c8fc](https://github.com/relekang/todo/commit/216c8fc)), closes [#5](https://github.com/relekang/todo/issues/5)
+
+
+
+
+
 # [1.7.0](https://github.com/relekang/todo/compare/@relekang/todo@1.6.0...@relekang/todo@1.7.0) (2019-03-07)
 
 
